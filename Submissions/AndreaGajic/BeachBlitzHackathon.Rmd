@@ -1,0 +1,133 @@
+---
+title: "BeachBlitzHackathon"
+author: "Andrea Gajic"
+date: "11/4/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("ggplot2", repos = "http://cran.us.r-project.org")
+install.packages("dplyr", repos = "http://cran.us.r-project.org")
+install.packages("magrittr", repos = "http://cran.us.r-project.org")
+library("magrittr")
+library("ggplot2")
+library("dplyr")
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, eval = FALSE}
+Data <- read.csv("2791_2019.csv")
+
+```
+Highest success - highest level of the hab achieved in endgame
+
+Filters universally applied for the following graphs:
+Starting Position - indicated in title
+Highest attempt is greater than 2
+Highest success is greater than 2
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L2"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.C, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "L2 - Number of Cargo Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L1"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.C, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "L1 - Number of Cargo Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "M"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.C, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "M - Number of Cargo Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "R1"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.C, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "R1 - Number of Cargo Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "R2"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.C, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "R2 - Number of Cargo Dropped in Teleop")
+```
+
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L2"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.H, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "L2 - Number of Hatches Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L1"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.H, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "L1 - Number of Hatches Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "M"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.H, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "M - Number of Hatches Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "R1"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.H, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "R1 - Number of Hatches Dropped in Teleop")
+```
+
+```{r}
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "R2"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
+
+ggplot(Frame3.df, aes(x = Tele.Dropped.H, fill = Team.Number)) +
+  geom_bar(position = "dodge") + labs(title = "R2 - Number of Hatches Dropped in Teleop")
+```
+
+
+```{r, eval = FALSE}
+#Frame Filter sample
+Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L2"))
+Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
+Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 1))
+```
