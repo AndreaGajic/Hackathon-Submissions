@@ -7,7 +7,7 @@ output:
   pdf_document: default
 ---
 
-```{r setup, include=TRUE, echo = FALSE}
+```{r setup, include=FALSE, echo = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 install.packages("ggplot2", repos = "http://cran.us.r-project.org")
 install.packages("dplyr", repos = "http://cran.us.r-project.org")
@@ -19,9 +19,6 @@ library("dplyr")
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r, eval = TRUE, echo = FALSE}
 Data <- read.csv("2791_2019.csv")
@@ -34,7 +31,7 @@ Starting Position - indicated in title
 Highest attempt is greater than 2
 Highest success is greater than 2
 
-Each graph addresses all matches, so data is an overview. Teams may appear multiple times, as starting position varies.
+Each graph addresses all matches, so data is an overview. Teams may appear multiple times, as starting position varies.Overlap is unavoidable.
 ```{r, echo = FALSE}
 Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L2"))
 Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
@@ -57,7 +54,6 @@ ggplot(Frame3.df, aes(y = Tele.Dropped.H, fill = Team.Number)) +
 Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L2"))
 Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
 Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
-names(Data)
 
 ggplot(Frame3.df, aes(y = Def.pl.quality, fill = Team.Number)) +
   geom_bar(position = "dodge") + labs(title = "L2 - Quality of Defense")
@@ -85,7 +81,6 @@ ggplot(Frame3.df, aes(y = Tele.Dropped.H, fill = Team.Number)) +
 Frame1.df <- data.frame(Data %>% filter(Starting.Position == "L1"))
 Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
 Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
-names(Data)
 
 ggplot(Frame3.df, aes(y = Def.pl.quality, fill = Team.Number)) +
   geom_bar(position = "dodge") + labs(title = "L1 - Quality of Defense")
@@ -113,7 +108,6 @@ ggplot(Frame3.df, aes(y = Tele.Dropped.H, fill = Team.Number)) +
 Frame1.df <- data.frame(Data %>% filter(Starting.Position == "M"))
 Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
 Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
-names(Data)
 
 ggplot(Frame3.df, aes(y = Def.pl.quality, fill = Team.Number)) +
   geom_bar(position = "dodge") + labs(title = "M - Quality of Defense")
@@ -141,7 +135,6 @@ ggplot(Frame3.df, aes(y = Tele.Dropped.H, fill = Team.Number)) +
 Frame1.df <- data.frame(Data %>% filter(Starting.Position == "R1"))
 Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
 Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
-names(Data)
 
 ggplot(Frame3.df, aes(y = Def.pl.quality, fill = Team.Number)) +
   geom_bar(position = "dodge") + labs(title = "R1 - Quality of Defense")
@@ -169,7 +162,6 @@ ggplot(Frame3.df, aes(y = Tele.Dropped.H, fill = Team.Number)) +
 Frame1.df <- data.frame(Data %>% filter(Starting.Position == "R2"))
 Frame2.df <- data.frame(Frame1.df %>% filter(Highest.attempt > 2))
 Frame3.df <- data.frame(Frame2.df %>% filter(Highest.success > 2))
-names(Data)
 
 ggplot(Frame3.df, aes(y = Def.pl.quality, fill = Team.Number)) +
   geom_bar(position = "dodge") + labs(title = "R2 - Quality of Defense")
